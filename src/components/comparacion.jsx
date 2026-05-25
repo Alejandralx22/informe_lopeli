@@ -1,7 +1,7 @@
 import { arrowLeftRight } from "lucide-react"
 import MarkdownSection from "./mdSection"
 
-export default function Marco() {
+export default function Comparacion() {
   return (
     <MarkdownSection
       title="Comparación caso con Chile"
