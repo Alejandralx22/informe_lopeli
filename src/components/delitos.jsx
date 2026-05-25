@@ -1,4 +1,4 @@
-import { shieldBan } from "lucide-react"
+import { ShieldBan } from "lucide-react"
 import MarkdownSection from "./mdSection"
 
 export default function Delitos() {
