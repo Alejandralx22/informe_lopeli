@@ -19,10 +19,6 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
-
-  .prose-custom {
-    @apply prose prose-sm sm:prose lg:prose-lg;
-  }
 }
 
 /* Animaciones personalizadas */
