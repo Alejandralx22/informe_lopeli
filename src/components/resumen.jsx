@@ -8,7 +8,6 @@ export default function Resumen() {
       subtitle="Caso blackcat"
       file="01_resumen_lopeli.md"
       Icon={FileText}
-      Icon={(props) => <FileText {...props} className="text-red-500" />}
     />
   )
 }
