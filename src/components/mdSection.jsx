@@ -63,7 +63,7 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
             </div>
           </div>
 
-          <div className="prose prose-sm sm:prose lg:prose-lg max-w-none text-slate-700">
+          <div className="max-w-none text-slate-700">
             {loading && (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin">
@@ -73,7 +73,7 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
             )}
             {error && <p className="text-red-600 font-semibold">{error}</p>}
             {!loading && !error && (
-              <div className="space-y-4 prose-headings:text-slate-800 prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-p:text-slate-700 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-800 prose-strong:font-bold">
+              <div className="space-y-4">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
