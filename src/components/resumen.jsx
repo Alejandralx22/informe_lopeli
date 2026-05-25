@@ -1,5 +1,5 @@
 import { FileText } from "lucide-react"
-import MarkdownSection from "./MarkdownSection"
+import MarkdownSection from "./mdSection"
 
 export default function Resumen() {
   return (
