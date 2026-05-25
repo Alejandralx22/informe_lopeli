@@ -2,6 +2,7 @@ import Resumen from "./components/Resumen"
 import Marco from "./components/marco"
 import Delitos from "./components/delitos"
 import Comparacion from "./components/comparacion"
+import Responsabilidades from "./components/responsabilidades"
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Marco />
       <Delitos />
       <Comparacion />
+      <Responsabilidades />
     </div>
   )
 }
