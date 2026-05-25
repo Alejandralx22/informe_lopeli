@@ -1,4 +1,4 @@
-import { Checkline } from "lucide-react"
+import { CheckCircle } from "lucide-react"
 import MarkdownSection from "./mdSection"
 
 export default function Conclusiones() {
@@ -7,7 +7,7 @@ export default function Conclusiones() {
       title="Conclusiones"
       subtitle="Reflexiones finales sobre el caso BlackCat y su impacto en la ciberseguridad"
       file="07_conclusiones_lopeli.md"
-      Icon={Checkline}
+      Icon={CheckCircle}
     />
   )
 }
