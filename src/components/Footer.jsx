@@ -1,4 +1,4 @@
-import { Heart, Mail, Github } from "lucide-react"
+import { Heart, Mail, Code } from "lucide-react"
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -35,7 +35,7 @@ export default function Footer() {
                 info@example.com
               </a>
               <a href="#" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors text-sm">
-                <Github size={16} />
+                <Code size={16} />
                 GitHub
               </a>
             </div>
