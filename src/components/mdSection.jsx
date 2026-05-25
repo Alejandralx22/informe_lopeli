@@ -2,10 +2,25 @@ import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 
+const colors = {
+  resumen: { bg: 'from-blue-500 to-cyan-500', dark: 'from-blue-600 to-cyan-600' },
+  marco: { bg: 'from-indigo-500 to-purple-500', dark: 'from-indigo-600 to-purple-600' },
+  delitos: { bg: 'from-rose-500 to-pink-500', dark: 'from-rose-600 to-pink-600' },
+  comparacion: { bg: 'from-amber-500 to-orange-500', dark: 'from-amber-600 to-orange-600' },
+  responsabilidades: { bg: 'from-emerald-500 to-teal-500', dark: 'from-emerald-600 to-teal-600' },
+  datos: { bg: 'from-violet-500 to-purple-500', dark: 'from-violet-600 to-purple-600' },
+  conclusiones: { bg: 'from-cyan-500 to-blue-500', dark: 'from-cyan-600 to-blue-600' },
+  prompts: { bg: 'from-fuchsia-500 to-rose-500', dark: 'from-fuchsia-600 to-rose-600' },
+}
+
 export default function MarkdownSection({ title, subtitle, file, Icon }) {
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  
+  const colorKey = title.toLowerCase().split(' ')[0]
+  const colorTheme = colors[colorKey] || colors.resumen
+
   useEffect(() => {
     let active = true
     async function load() {
@@ -29,20 +44,54 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
   }, [file])
 
   return (
-    <section className="max-w-4xl mx-auto p-4">
-      <div className="p-[2px] rounded-3xl bg-gradient-to-r from-red-500 via-indigo-500 to-violet-500"/>
-            <div className="bg-white rounded-3xl p-6">
-        <div className="flex items-center gap-3 mb-5">
-          {Icon && <Icon className="h-8 w-8 text-violet-500" />}
-          <div>
-            <h2 className="text-2xl font-semibold text-slate-900">{title}</h2>
-            {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+    <section className="w-full">
+      <div className={`p-[3px] rounded-2xl bg-gradient-to-r ${colorTheme.bg}`}>
+        <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+          <div className="flex items-start gap-3 sm:gap-4 mb-6">
+            {Icon && (
+              <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-r ${colorTheme.bg} flex-shrink-0`}>
+                <Icon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
+              </div>
+            )}
+            <div className="flex-1 min-w-0">
+              <h2 className={`text-xl sm:text-2xl lg:text-3xl font-bold bg-gradient-to-r ${colorTheme.bg} bg-clip-text text-transparent`}>
+                {title}
+              </h2>
+              {subtitle && (
+                <p className="text-xs sm:text-sm text-slate-500 mt-1">{subtitle}</p>
+              )}
+            </div>
           </div>
-        </div>
-        <div className="prose max-w-none text-slate-700">
-          {loading && <p>Cargando...</p>}
-          {error && <p className="text-red-600">{error}</p>}
-          {!loading && !error && <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>}
+
+          <div className="prose prose-sm sm:prose lg:prose-lg max-w-none text-slate-700">
+            {loading && (
+              <div className="flex items-center justify-center py-8">
+                <div className="animate-spin">
+                  <div className={`w-8 h-8 border-4 border-gray-200 border-t-gradient-to-r ${colorTheme.bg} rounded-full`}></div>
+                </div>
+              </div>
+            )}
+            {error && <p className="text-red-600 font-semibold">{error}</p>}
+            {!loading && !error && (
+              <div className="space-y-4 prose-headings:text-slate-800 prose-h1:text-xl prose-h2:text-lg prose-h3:text-base prose-p:text-slate-700 prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-slate-800 prose-strong:font-bold">
+                <ReactMarkdown 
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    h1: ({node, ...props}) => <h1 className="text-xl sm:text-2xl font-bold text-slate-800 mt-6 mb-3" {...props} />,
+                    h2: ({node, ...props}) => <h2 className="text-lg sm:text-xl font-bold text-slate-800 mt-5 mb-2" {...props} />,
+                    h3: ({node, ...props}) => <h3 className="text-base sm:text-lg font-semibold text-slate-700 mt-4 mb-2" {...props} />,
+                    p: ({node, ...props}) => <p className="text-sm sm:text-base text-slate-700 leading-relaxed" {...props} />,
+                    ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-2 text-sm sm:text-base" {...props} />,
+                    ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-2 text-sm sm:text-base" {...props} />,
+                    li: ({node, ...props}) => <li className="text-slate-700" {...props} />,
+                    a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-800 underline" {...props} />,
+                  }}
+                >
+                  {content}
+                </ReactMarkdown>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>

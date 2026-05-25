@@ -1,1 +1,42 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 scroll-smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .prose-custom {
+    @apply prose prose-sm sm:prose lg:prose-lg;
+  }
+}
+
+/* Animaciones personalizadas */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section {
+  animation: slideInUp 0.5s ease-out;
+}
