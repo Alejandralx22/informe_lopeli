@@ -30,7 +30,7 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
 
   return (
     <section className="max-w-4xl mx-auto p-4">
-      <div className="bg-white/90 backdrop-blur border border-slate-200 shadow-lg rounded-2xl p-6 hover:shadow-xl transition">
+      <div className="bg-white shadow-xl rounded-3xl border-l-4 border-violet-500 p-6">
         <div className="flex items-center gap-3 mb-5">
           {Icon && <Icon className="h-8 w-8 text-violet-500" />}
           <div>
