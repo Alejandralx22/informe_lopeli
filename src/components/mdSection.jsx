@@ -30,7 +30,7 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
 
   return (
     <section className="max-w-4xl mx-auto p-4">
-      <div className="p-[2px] rounded-3xl bg-gradient-to-r from-sky-500 via-indigo-500 to-violet-500"/>
+      <div className="p-[2px] rounded-3xl bg-gradient-to-r from-red-500 via-indigo-500 to-violet-500"/>
             <div className="bg-white rounded-3xl p-6">
         <div className="flex items-center gap-3 mb-5">
           {Icon && <Icon className="h-8 w-8 text-violet-500" />}
