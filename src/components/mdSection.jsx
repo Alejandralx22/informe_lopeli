@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import { contentMap } from '../assets/markdownContent'
 
 const colors = {
   resumen: { bg: 'from-blue-500 to-cyan-500', dark: 'from-blue-600 to-cyan-600' },
@@ -15,7 +16,6 @@ const colors = {
 
 export default function MarkdownSection({ title, subtitle, file, Icon }) {
   const [content, setContent] = useState('')
-  const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
   const [isDark, setIsDark] = useState(false)
   
@@ -36,24 +36,16 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
   }, [])
 
   useEffect(() => {
-    let active = true
-    async function load() {
-      setLoading(true)
-      setError('')
-      try {
-        const resp = await fetch(`/docs_lopeli/${file}`)
-        if (!resp.ok) throw new Error(`Error ${resp.status}`)
-        const text = await resp.text()
-        if (active) setContent(text)
-      } catch (err) {
-        if (active) setError('No se pudo cargar')
-      } finally {
-        if (active) setLoading(false)
+    try {
+      const fileContent = contentMap[file]
+      if (fileContent) {
+        setContent(fileContent)
+        setError('')
+      } else {
+        setError('Archivo no encontrado')
       }
-    }
-    load()
-    return () => {
-      active = false
+    } catch (err) {
+      setError('Error al cargar el contenido')
     }
   }, [file])
 
@@ -84,19 +76,8 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
           </div>
 
           <div className="max-w-none">
-            {loading && (
-              <div className="flex items-center justify-center py-8">
-                <div className="animate-spin">
-                  <div className={`w-8 h-8 border-4 rounded-full border-t-current ${
-                    isDark 
-                      ? 'border-slate-600 text-blue-400' 
-                      : 'border-gray-200 text-blue-600'
-                  }`}></div>
-                </div>
-              </div>
-            )}
             {error && <p className="text-red-600 font-semibold">{error}</p>}
-            {!loading && !error && (
+            {!error && (
               <div className="space-y-4">
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
