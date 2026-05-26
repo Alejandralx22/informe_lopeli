@@ -1,7 +1,7 @@
 import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Moon, Sun } from "lucide-react"
 
-export default function Header() {
+export default function Header({ isDark, toggleDarkMode }) {
   const [isOpen, setIsOpen] = useState(false)
 
   const sections = [
@@ -47,13 +47,22 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Dark Mode and Mobile Menu Buttons */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleDarkMode}
+              className="p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors"
+              title="Cambiar a modo oscuro"
+            >
+              {isDark ? <Sun size={24} /> : <Moon size={24} />}
+            </button>
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

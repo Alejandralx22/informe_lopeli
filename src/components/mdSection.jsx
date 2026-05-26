@@ -17,9 +17,23 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
   const [content, setContent] = useState('')
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [isDark, setIsDark] = useState(false)
   
   const colorKey = title.toLowerCase().split(' ')[0]
   const colorTheme = colors[colorKey] || colors.resumen
+
+  useEffect(() => {
+    const checkDarkMode = () => {
+      setIsDark(document.documentElement.classList.contains('dark'))
+    }
+    
+    checkDarkMode()
+    
+    const observer = new MutationObserver(checkDarkMode)
+    observer.observe(document.documentElement, { attributes: true })
+    
+    return () => observer.disconnect()
+  }, [])
 
   useEffect(() => {
     let active = true
@@ -46,7 +60,11 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
   return (
     <section className="w-full">
       <div className={`p-[3px] rounded-2xl bg-gradient-to-r ${colorTheme.bg}`}>
-        <div className="bg-white rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+        <div className={`rounded-2xl p-4 sm:p-6 lg:p-8 shadow-xl hover:shadow-2xl transition-all duration-300 ${
+          isDark 
+            ? 'bg-slate-800 text-slate-100' 
+            : 'bg-white text-slate-800'
+        }`}>
           <div className="flex items-start gap-3 sm:gap-4 mb-6">
             {Icon && (
               <div className={`p-2 sm:p-3 rounded-lg bg-gradient-to-r ${colorTheme.bg} flex-shrink-0`}>
@@ -58,16 +76,22 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
                 {title}
               </h2>
               {subtitle && (
-                <p className="text-xs sm:text-sm text-slate-500 mt-1">{subtitle}</p>
+                <p className={`text-xs sm:text-sm mt-1 ${isDark ? 'text-slate-400' : 'text-slate-500'}`}>
+                  {subtitle}
+                </p>
               )}
             </div>
           </div>
 
-          <div className="max-w-none text-slate-700">
+          <div className="max-w-none">
             {loading && (
               <div className="flex items-center justify-center py-8">
                 <div className="animate-spin">
-                  <div className={`w-8 h-8 border-4 border-gray-200 border-t-gradient-to-r ${colorTheme.bg} rounded-full`}></div>
+                  <div className={`w-8 h-8 border-4 rounded-full border-t-current ${
+                    isDark 
+                      ? 'border-slate-600 text-blue-400' 
+                      : 'border-gray-200 text-blue-600'
+                  }`}></div>
                 </div>
               </div>
             )}
@@ -77,14 +101,14 @@ export default function MarkdownSection({ title, subtitle, file, Icon }) {
                 <ReactMarkdown 
                   remarkPlugins={[remarkGfm]}
                   components={{
-                    h1: ({node, ...props}) => <h1 className="text-xl sm:text-2xl font-bold text-slate-800 mt-6 mb-3" {...props} />,
-                    h2: ({node, ...props}) => <h2 className="text-lg sm:text-xl font-bold text-slate-800 mt-5 mb-2" {...props} />,
-                    h3: ({node, ...props}) => <h3 className="text-base sm:text-lg font-semibold text-slate-700 mt-4 mb-2" {...props} />,
-                    p: ({node, ...props}) => <p className="text-sm sm:text-base text-slate-700 leading-relaxed" {...props} />,
-                    ul: ({node, ...props}) => <ul className="list-disc list-inside space-y-2 text-sm sm:text-base" {...props} />,
-                    ol: ({node, ...props}) => <ol className="list-decimal list-inside space-y-2 text-sm sm:text-base" {...props} />,
-                    li: ({node, ...props}) => <li className="text-slate-700" {...props} />,
-                    a: ({node, ...props}) => <a className="text-blue-600 hover:text-blue-800 underline" {...props} />,
+                    h1: ({node, ...props}) => <h1 className={`text-xl sm:text-2xl font-bold mt-6 mb-3 ${isDark ? 'text-slate-100' : 'text-slate-800'}`} {...props} />,
+                    h2: ({node, ...props}) => <h2 className={`text-lg sm:text-xl font-bold mt-5 mb-2 ${isDark ? 'text-slate-100' : 'text-slate-800'}`} {...props} />,
+                    h3: ({node, ...props}) => <h3 className={`text-base sm:text-lg font-semibold mt-4 mb-2 ${isDark ? 'text-slate-200' : 'text-slate-700'}`} {...props} />,
+                    p: ({node, ...props}) => <p className={`text-sm sm:text-base leading-relaxed ${isDark ? 'text-slate-300' : 'text-slate-700'}`} {...props} />,
+                    ul: ({node, ...props}) => <ul className={`list-disc list-inside space-y-2 text-sm sm:text-base ${isDark ? 'text-slate-300' : 'text-slate-700'}`} {...props} />,
+                    ol: ({node, ...props}) => <ol className={`list-decimal list-inside space-y-2 text-sm sm:text-base ${isDark ? 'text-slate-300' : 'text-slate-700'}`} {...props} />,
+                    li: ({node, ...props}) => <li className={isDark ? 'text-slate-300' : 'text-slate-700'} {...props} />,
+                    a: ({node, ...props}) => <a className={`underline ${isDark ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-800'}`} {...props} />,
                   }}
                 >
                   {content}

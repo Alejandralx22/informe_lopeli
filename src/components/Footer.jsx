@@ -1,10 +1,14 @@
 import { Heart, Mail, Code } from "lucide-react"
 
-export default function Footer() {
+export default function Footer({ isDark }) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer className="bg-gradient-to-r from-slate-800 via-slate-900 to-black text-white mt-16">
+    <footer className={`transition-colors duration-300 ${ 
+      isDark 
+        ? 'bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 text-white' 
+        : 'bg-gradient-to-r from-slate-800 via-slate-900 to-black text-white'
+    } mt-16`}>
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About */}
