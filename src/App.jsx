@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react"
-import Resumen from "./components/Resumen"
+import Resumen from "./components/resumen"
 import Marco from "./components/marco"
 import Delitos from "./components/delitos"
 import Comparacion from "./components/comparacion"
