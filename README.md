@@ -1,16 +1,40 @@
-# React + Vite
+# Informe Legal y Técnico — Caso BlackCat / Change Healthcare
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado en React + Vite para el análisis legal y técnico del ataque de ransomware realizado por el grupo BlackCat contra Change Healthcare durante el año 2024.
 
-Currently, two official plugins are available:
+## Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Este informe analiza las implicancias legales, técnicas y operacionales del incidente de ciberseguridad, utilizando como referencia la legislación chilena relacionada con:
 
-## React Compiler
+- Ley 21.459 sobre Delitos Informáticos
+- Ley 19.628 sobre Protección de la Vida Privada
+- Ley 21.663 sobre Ciberseguridad e Infraestructura Crítica
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El proyecto fue desarrollado como una aplicación web utilizando React, Vite y Tailwind CSS.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologías utilizadas
+
+- React
+- Vite
+- Tailwind CSS
+- Lucide React
+- Markdown
+- Git & GitHub
+- Vercel
+
+---
+
+## Estructura del proyecto
+
+```plaintext
+docs_lopeli/
+├── 01_resumen_lopeli.md
+├── 02_marco_lopeli.md
+├── 03_delitos_lopeli.md
+├── 04_comparacion_lopeli.md
+├── 05_responsabilidades_lopeli.md
+├── 06_datos_lopeli.md
+├── 07_conclusiones_lopeli.md
+└── 08_prompts_lopeli.md
