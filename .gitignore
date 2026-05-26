@@ -12,6 +12,9 @@ dist
 dist-ssr
 *.local
 
+# Avoid duplicating docs folder (should only exist in public/)
+docs_lopeli/
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
