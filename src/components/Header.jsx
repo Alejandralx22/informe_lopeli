@@ -24,7 +24,7 @@ export default function Header() {
   }
 
   return (
-    <header className="sticky top-0 z-50 bg-gradient-to-r from-blue-600 via-blue-500 to-indigo-600 text-white shadow-lg">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-violet-600 via-purple-500 to-indigo-600 text-white shadow-lg">
       <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6">
         <div className="flex justify-between items-center">
           <div className="flex items-center gap-2">

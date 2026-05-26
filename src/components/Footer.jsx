@@ -9,32 +9,28 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-400">Sobre LOPELI</h3>
+            <h3 className="text-lg font-bold mb-4 text-indigo-400">Sobre LOPELI</h3>
             <p className="text-gray-300 text-sm leading-relaxed">
-              Informe completo sobre la Ley Orgánica de Protección del Estado de Derecho, Estabilidad Macroeconómica y Pertenencia al Sistema Financiero Internacional.
+              Informe completo sobre el caso de los sistemas de Change Healthcare, analizando el marco legal, los delitos cometidos, las responsabilidades y los datos relevantes.
             </p>
           </div>
 
           {/* Secciones */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-400">Secciones</h3>
+            <h3 className="text-lg font-bold mb-4 text-indigo-400">Secciones</h3>
             <ul className="space-y-2 text-gray-300 text-sm">
-              <li><a href="#resumen" className="hover:text-blue-400 transition-colors">Resumen Ejecutivo</a></li>
-              <li><a href="#marco" className="hover:text-blue-400 transition-colors">Marco Legal</a></li>
-              <li><a href="#delitos" className="hover:text-blue-400 transition-colors">Delitos</a></li>
-              <li><a href="#datos" className="hover:text-blue-400 transition-colors">Datos</a></li>
+              <li><a href="#resumen" className="hover:text-violet-400 transition-colors">Resumen Ejecutivo</a></li>
+              <li><a href="#marco" className="hover:text-violet-400 transition-colors">Marco Legal</a></li>
+              <li><a href="#delitos" className="hover:text-violet-400 transition-colors">Delitos</a></li>
+              <li><a href="#datos" className="hover:text-violet-400 transition-colors">Datos</a></li>
             </ul>
           </div>
 
           {/* Contacto */}
           <div>
-            <h3 className="text-lg font-bold mb-4 text-blue-400">Contacto</h3>
+            <h3 className="text-lg font-bold mb-4 text-indigo-400">Contacto</h3>
             <div className="flex flex-col gap-3">
-              <a href="mailto:info@example.com" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors text-sm">
-                <Mail size={16} />
-                info@example.com
-              </a>
-              <a href="#" className="flex items-center gap-2 text-gray-300 hover:text-blue-400 transition-colors text-sm">
+              <a href="https://github.com/Alejandralx22" className="flex items-center gap-2 text-gray-300 hover:text-violet-400 transition-colors text-sm">
                 <Code size={16} />
                 GitHub
               </a>
